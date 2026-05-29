@@ -3,7 +3,6 @@
 namespace
 {
     juce::Colour purple() { return juce::Colour::fromRGB(112, 72, 232); }
-    juce::Colour lightPurple() { return juce::Colour::fromRGB(244, 239, 255); }
 
     void styleLabel(juce::Label& label, float size, bool bold = false)
     {
