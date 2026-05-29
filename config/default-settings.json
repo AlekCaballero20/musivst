@@ -1,0 +1,18 @@
+{
+  "app": "MusiVST Guitar Host",
+  "version": "0.1.0",
+  "audio": {
+    "deviceType": "",
+    "inputDeviceName": "",
+    "outputDeviceName": "",
+    "sampleRate": 44100,
+    "bufferSize": 128,
+    "inputChannelsMask": "1",
+    "outputChannelsMask": "3",
+    "stateXml": ""
+  },
+  "plugin": {
+    "lastPluginPath": "",
+    "lastPluginName": ""
+  }
+}
