@@ -50,7 +50,8 @@ void AudioEngine::initialise(const juce::var& settings)
 juce::var AudioEngine::createAudioSettingsJson()
 {
     auto* audio = new juce::DynamicObject();
-    auto setup = deviceManager.getAudioDeviceSetup();
+    juce::AudioDeviceManager::AudioDeviceSetup setup;
+    deviceManager.getAudioDeviceSetup(setup);
 
     audio->setProperty("deviceType", deviceManager.getCurrentAudioDeviceType());
     audio->setProperty("inputDeviceName", setup.inputDeviceName);
@@ -102,7 +103,8 @@ void AudioEngine::panic() noexcept
 
 void AudioEngine::setRequestedBufferSize(int requestedBufferSize)
 {
-    auto setup = deviceManager.getAudioDeviceSetup();
+    juce::AudioDeviceManager::AudioDeviceSetup setup;
+    deviceManager.getAudioDeviceSetup(setup);
     setup.bufferSize = requestedBufferSize;
     const auto error = deviceManager.setAudioDeviceSetup(setup, true);
 
@@ -161,12 +163,16 @@ juce::String AudioEngine::getCurrentDeviceType()
 
 juce::String AudioEngine::getCurrentInputDeviceName()
 {
-    return deviceManager.getAudioDeviceSetup().inputDeviceName;
+    juce::AudioDeviceManager::AudioDeviceSetup setup;
+    deviceManager.getAudioDeviceSetup(setup);
+    return setup.inputDeviceName;
 }
 
 juce::String AudioEngine::getCurrentOutputDeviceName()
 {
-    return deviceManager.getAudioDeviceSetup().outputDeviceName;
+    juce::AudioDeviceManager::AudioDeviceSetup setup;
+    deviceManager.getAudioDeviceSetup(setup);
+    return setup.outputDeviceName;
 }
 
 void AudioEngine::audioDeviceIOCallbackWithContext(const float* const* inputChannelData,

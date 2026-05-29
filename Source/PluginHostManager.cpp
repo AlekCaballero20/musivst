@@ -48,8 +48,10 @@ bool PluginHostManager::findPluginDescriptionForFile(const juce::File& pluginFil
     const auto identifier = pluginFile.getFullPathName();
     juce::OwnedArray<juce::PluginDescription> foundTypes;
 
-    for (auto* format : formatManager.getFormats())
+    for (int i = 0; i < formatManager.getNumFormats(); ++i)
     {
+        auto* format = formatManager.getFormat(i);
+
         if (format == nullptr)
             continue;
 
